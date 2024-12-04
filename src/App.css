@@ -1,26 +1,23 @@
 body {
   margin: 0;
+  background-color: #000000;
   color: #fff;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(to bottom, #020917, #101725);
+  font-family: "IBM Plex Serif", Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .content {
   display: flex;
+  margin: 0px;
+  padding: 0px;
   min-height: 100vh;
-  line-height: 1.1;
-  text-align: center;
+  line-height: 1;
+  text-align: left;
   flex-direction: column;
-  justify-content: center;
-}
-
-.content h1 {
-  font-size: 3.6rem;
-  font-weight: 600;
 }
 
 .content p {
-  font-size: 1.2rem;
-  font-weight: 400;
-  opacity: 0.5;
+  font-weight: 220;
+  margin: 0px;
+  padding: 0px;
 }
+

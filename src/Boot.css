@@ -1,0 +1,15 @@
+@keyframes boot_text {
+  0%   { opacity: 0%; }
+  99%  { opacity: 0%; }
+  100% { opacity: 100%; }
+}
+
+.boot-text {
+  animation-name: boot_text;
+  animation-duration: 1.5s;
+}
+
+.boot-text-1 {
+  animation-name: boot_text;
+  animation-duration: 2.0s;
+}

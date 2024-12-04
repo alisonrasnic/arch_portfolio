@@ -1,11 +1,11 @@
+
 import './App.css';
+
+import {Boot} from './Boot.tsx';
 
 const App = () => {
   return (
-    <div className="content">
-      <h1>Rspack!!! with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-    </div>
+    <Boot></Boot>
   );
 };
 
