@@ -55,7 +55,7 @@ const Boot: React.FC<> = ({}) => {
 
 			console.log("timer += 100");
 			if (timer >= 7000) {
-				navigate("/home");
+				navigate("#/home");
 			}
     }
 
