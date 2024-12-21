@@ -2,10 +2,10 @@
   "name": "arch-portfolio",
   "private": true,
   "version": "1.0.0",
-	"homepage": "./",
+	"homepage": ".",
   "scripts": {
     "dev": "rsbuild dev --open",
-    "build": "rsbuild build",
+    "build": "rsbuild build -m production -r \"./\"",
     "preview": "rsbuild preview",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
