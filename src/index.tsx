@@ -11,8 +11,8 @@ if (rootEl) {
   root.render(
     <BrowserRouter>
       <Routes>
-        <Route index element={<App />} />
-				<Route path="/home" element ={<Desktop/>} />
+        <Route path="/arch_portfolio/" element={<App />} />
+				<Route path="/arch_portfolio/home" element ={<Desktop/>} />
       </Routes>
     </BrowserRouter>
   );
