@@ -1,9 +1,13 @@
 import './Boot.css';
 import { React, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
-const Boot = () => {
+import { Desktop } from './KDEDesktop/Desktop.tsx';
+
+const Boot: React.FC<> = ({}) => {
     
     var timer = 0.0;
+		const navigate = useNavigate();
     const boot_texts = [
 	":: running early hook [Custom]",
 	"Starting version 2024.12.01-arch",
@@ -49,6 +53,10 @@ const Boot = () => {
     
       timer += 100;
 
+			console.log("timer += 100");
+			if (timer >= 7000) {
+				navigate("/home");
+			}
     }
 
 
@@ -65,13 +73,13 @@ const Boot = () => {
       <div className="content">
         <p className="boot-text">Starting Linux linux...</p>
         <p className="boot-text-1">Starting ramdisk...</p>
-	{ boot_texts.map(function(text, i) {
-	    const time = 2.0 + ((i+(Math.random()*0.5))/10);
-            return <p className="boot-text-1" style={{animationDuration: `${time}s` }}>{text}</p>
-	    })
-        }
+					{ boot_texts.map(function(text, i) {
+	    			const time = 2.0 + ((i+(Math.random()*0.5))/10);
+           		return <p className="boot-text-1" style={{animationDuration: `${time}s` }}>{text}</p>
+	    			})
+        	}
       </div>
-    );
-}
+  	);
+};
 
 export {Boot};

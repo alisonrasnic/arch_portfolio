@@ -1,0 +1,8 @@
+.kde_desktop {
+	width: 100%;
+	height: 100vh;
+	background-position: center center;
+	background-repeat: none;
+	background-image: url('https://invent.kde.org/plasma/breeze/-/raw/master/wallpapers/Next/contents/images/7680x2160.png');
+	background-size: cover;
+}
