@@ -2,7 +2,7 @@
   "name": "arch-portfolio",
   "private": true,
   "version": "1.0.0",
-	"homepage": "/arch_portfolio/#",
+	"homepage": "https://alisonrasnic.github.io/arch_portfolio/#",
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build -m production -r \"./\"",
