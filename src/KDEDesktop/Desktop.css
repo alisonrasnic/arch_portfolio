@@ -5,4 +5,13 @@
 	background-repeat: none;
 	background-image: url('https://invent.kde.org/plasma/breeze/-/raw/master/wallpapers/Next/contents/images/7680x2160.png');
 	background-size: cover;
+	cursor: url('https://raw.githubusercontent.com/KDE/breeze/1c29fec85b2b8703e9394a47207d1cabcee35635/cursors/Breeze/Breeze/cursors_scalable/default/default.svg'), auto;
+}
+
+.desktop_select {
+	border-radius: 10px;
+	display: block;
+	position: absolute;
+	border: 1px solid rgba(255, 255, 255, 1);
+	background-color: rgba(48, 43, 95, 0.4);
 }
