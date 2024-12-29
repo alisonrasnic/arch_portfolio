@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [pluginReact()],
 	output: {
 		assetPrefix: './'
+	},
+	html: {
+		title: "Alison Rasnic Portfolio"
 	}
 });

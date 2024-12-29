@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import { Panel } from './Panel.tsx';
+import { Clock } from './PanelComponents/Clock.tsx';
+
 import './Desktop.css';
 
 interface SelectionSquareProps {
@@ -10,7 +13,7 @@ interface SelectionSquareProps {
 }
 
 const SelectionSquare: React.FC = (props: SelectionSquareProps) => {
-	return ( <div className="desktop_select" style={{display: `block`, position: `absolute`, left: `${props.x}px`, top: `${props.y}px`, width: `${props.width}px`, height: `${props.height}px`, zIndex: `10` }} /> );
+	return ( <div className="desktop_select" style={{display: `block`, position: `absolute`, left: `${props.x}px`, top: `${props.y}px`, width: `${props.width}px`, height: `${props.height}px`, zIndex: `10` }} /> )
 };
 
 const Desktop = () => {
@@ -41,6 +44,8 @@ const Desktop = () => {
 
 	return ( <div className="kde_desktop" onMouseMove={mouseMove} onMouseDown={isMouseDown} onMouseUp={mouseUp}>
 
+						 <Panel w="750" h="32" icons={['https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/places/96/start-here-kde.svg?ref_type=heads']}></Panel>
+						 <Clock />
 					   {mouseDown ? selectComponent : <></>}	
 
 					 </div>
