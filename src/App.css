@@ -5,6 +5,10 @@ body {
   font-family: "IBM Plex Serif", Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 
+div {
+  user-select: none;
+}
+
 .content {
   display: flex;
   margin: 0px;

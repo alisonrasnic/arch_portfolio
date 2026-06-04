@@ -22,30 +22,64 @@ const Desktop = () => {
 	const [selectHeight, setSelectHeight] = useState(0);
 	const [selectX, setSelectX] = useState(0);
 	const [selectY, setSelectY] = useState(0);
+	const [clickX, setClickX] = useState(0);
+	const [clickY, setClickY] = useState(0);
 	const [selectComponent, setSelectComponent] = useState(<SelectionSquare />);
 	const [mouseDown, setMouseDown] = useState(false);
 
 	const mouseMove = (e: ReactEvent) => {
-		setSelectWidth((e.clientX - e.target.offsetLeft) - selectX);
-		setSelectHeight((e.clientY - e.target.offsetTop) - selectY);
-		setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+                var x = e.clientX; 
+                var y = e.clientY;
+                if (mouseDown && e.button === 0) {
+                  if (x < clickX) {
+                    setSelectX(x);
+                    setSelectWidth(clickX-x);
+                  } else {
+                    setSelectWidth(x-clickX);
+                    setSelectX(clickX);
+                  }
+
+                  if (y < clickY) {
+                    setSelectY(y);
+                    setSelectHeight(clickY-y);
+                  } else {
+                    setSelectHeight(y-clickY);
+                    setSelectY(clickY);
+                  }
+                }
+
+                setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
 	}
 
 	const isMouseDown = (e: ReactEvent) => {
-		setMouseDown(true);
-		setSelectX(e.clientX - e.target.offsetLeft);
-		setSelectY(e.clientY - e.target.offsetTop);
-		setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={0} height={0} />);
+                if (e.button === 0) {
+                    setMouseDown(true);
+                    var x = e.clientX - e.target.offsetLeft;
+                    var y = e.clientY - e.target.offsetTop;
+                    setClickX(x);
+                    setClickY(y);
+                    setSelectX(x);
+                    setSelectY(y);
+                    setSelectWidth(0);
+                    setSelectHeight(0);
+                    setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+                }
 	}
 
 	const mouseUp = (e: ReactEvent) => {
-		setMouseDown(false);
+                if (e.button === 0) {
+                    setMouseDown(false);
+                    setSelectX(0);
+                    setSelectY(0);
+                    setSelectWidth(0);
+                    setSelectHeight(0);
+                    setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+                }
 	}
 
 	return ( <div className="kde_desktop" onMouseMove={mouseMove} onMouseDown={isMouseDown} onMouseUp={mouseUp}>
 
 						 <Panel w="750" h="32" icons={['https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/places/96/start-here-kde.svg?ref_type=heads']}></Panel>
-						 <Clock />
 					   {mouseDown ? selectComponent : <></>}	
 
 					 </div>
