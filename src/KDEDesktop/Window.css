@@ -1,0 +1,28 @@
+.window {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  background-color: #333333;
+  border-radius: 3px;
+}
+
+.window .window_title {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin: auto;
+}
+
+.window_button {
+  background: none;
+  border: none;
+  cursor: url('https://raw.githubusercontent.com/KDE/breeze/1c29fec85b2b8703e9394a47207d1cabcee35635/cursors/Breeze/Breeze/cursors_scalable/default/default.svg'), auto;
+}
+
+.window_button:hover {
+  filter: brightness(150%); 
+}
+
+.window_button:active {
+  filter: brightness(50%); 
+}

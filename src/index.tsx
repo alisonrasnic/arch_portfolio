@@ -12,7 +12,7 @@ if (rootEl) {
     <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
-				<Route path="/home" element ={<Desktop/>} />
+        <Route path="/home" element ={<Desktop/>} />
       </Routes>
     </HashRouter>
   );
