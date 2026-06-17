@@ -3,14 +3,42 @@
   position: absolute;
   z-index: 100;
   background-color: #333333;
-  border-radius: 3px;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid; 
+  border-color: #555555;
+  padding: 0px;
+  margin: 0px;
 }
 
 .window .window_title {
   display: block;
+  height: 30px;
   position: relative;
   text-align: center;
-  margin: auto;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+.window .window_title p {
+  padding-top: 15px;
+  margin: 0px;
+  text-align: center;
+}
+
+.window_surface {
+  border-radius: 5px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #222222;
+  height: 404px;
+}
+
+.window_surface p {
+  background-color: #292929;
+  color: white;
+  padding: 20px;
 }
 
 .window_button {
