@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Panel } from './Panel.tsx';
 import { Window } from './Window.tsx';
 import { Clock } from './PanelComponents/Clock.tsx';
+import { DesktopIcon } from './DesktopIcon.tsx';
 
 import './Desktop.css';
 
@@ -27,6 +28,20 @@ const Desktop = () => {
   const [clickY, setClickY] = useState(0);
   const [selectComponent, setSelectComponent] = useState(<SelectionSquare />);
   const [mouseDown, setMouseDown] = useState(false);
+
+  const [windows, setWindows] = useState([{
+      title: 'Introduction',
+      id:    'introduction_window',
+      x:     0,
+      y:     0,
+    }, {
+      title: 'Test',
+      id:    'test_window',
+      x:     500,
+      y:     0,
+    }].map(t => {
+    return <Window className="window" x={t.x} y={t.y} w={"330px"} h={"100px"} title={t.title} id={t.id}/>;
+  }));
 
   const mouseMove = (e: ReactEvent) => {
                 var x = e.clientX; 
@@ -77,16 +92,20 @@ const Desktop = () => {
                     setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
                 }
   }
-  return ( <div className="kde_desktop" onMouseMove={mouseMove} onMouseDown={isMouseDown} onMouseUp={mouseUp}>
-             <Window x={174} y={44} w={"800px"} h={"450px"} title="Introduction" id="introduction_window"/>
-             <Panel w="975" h="42" icons={[
-               'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/places/96/start-here-kde.svg?ref_type=heads',
-               'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/48/systemsettings.svg?ref_type=heads',
-               'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/48/muondiscover.svg?ref_type=heads',
-               'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/64/system-file-manager.svg?ref_type=heads',
-             ]}></Panel>
-             {mouseDown ? selectComponent : <></>}	
-          </div>
+  return (  <div className="kde_desktop" onMouseMove={mouseMove} onMouseDown={isMouseDown} onMouseUp={mouseUp}>
+              <DesktopIcon title="Terminal" x="50" y="50"/>
+
+              { windows }
+
+              {/*<Window x={174} y={44} w={"800px"} h={"450px"} title="Introduction" id="introduction_window"/> */}
+              <Panel w="975" h="42" icons={[
+                'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/places/96/start-here-kde.svg?ref_type=heads',
+                'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/48/systemsettings.svg?ref_type=heads',
+                'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/48/muondiscover.svg?ref_type=heads',
+                'https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/apps/64/system-file-manager.svg?ref_type=heads',
+              ]}></Panel>
+              {mouseDown ? selectComponent : <></>}	
+           </div>
         );
 };
 

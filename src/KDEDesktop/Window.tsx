@@ -100,4 +100,4 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
   );
 };
 
-export {Window};
+export { WindowProps, Window};
