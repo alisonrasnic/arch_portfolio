@@ -73,9 +73,13 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
     }
   }
 
+  function onTitleMouseLeave(e: ReactEvent) {
+    setMouseDown(false);
+  }
+
   return (
     <div id={props.id} className="window" style={ {left: `${pos[0]}px`, top: `${pos[1]}px`, width: `${size[0]}`, height: `${size[1]}` }} >
-      <div className="window_title" onMouseDown={onTitleMouseDown} onMouseUp={onTitleMouseUp} onMouseMove={onTitleMouseMove}>
+      <div className="window_title" onMouseLeave={onTitleMouseLeave} onMouseDown={onTitleMouseDown} onMouseUp={onTitleMouseUp} onMouseMove={onTitleMouseMove}>
         <button className="window_button" onClick={onExit} style={{top: `0px`, float: `right`}}>
           <img style={{filter: `invert(100%)`}} width={20} src='https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/actions/16/window-close.svg?ref_type=heads'/>
         </button>
