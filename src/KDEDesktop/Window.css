@@ -9,6 +9,7 @@
   border-color: #555555;
   padding: 0px;
   margin: 0px;
+  user-select: text;
 }
 
 .window .window_title {
@@ -33,12 +34,14 @@
   padding: 0px;
   background-color: #222222;
   height: 404px;
+  user-select: text;
 }
 
 .window_surface p {
   background-color: #292929;
   color: white;
   padding: 20px;
+  user-select: text;
 }
 
 .window_button {
