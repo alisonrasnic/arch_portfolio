@@ -13,10 +13,11 @@ interface PanelProps {
 }
 
 const Panel: React.FC<PanelProps> = (props: PanelProps) => {
+  let i = 0;
 	return (
 		<div className="kde-panel" style={ {left: `${props.x}px`, top: `${props.y}px`, width: `${props.w}px`, height: `${props.h}px`, borderRadius: `${props.r}%`} }>
 			{props.icons.map( path => {
-				return <img className="kde-panel-icon" src={path} />
+				return <img key={i++} className="kde-panel-icon" src={path} />
 			})}	
 		</div>
 	);

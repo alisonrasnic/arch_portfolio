@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Panel } from './Panel.tsx';
 import { Window } from './Window.tsx';
+import { WindowHandler } from './WindowHandler.tsx';
 import { Clock } from './PanelComponents/Clock.tsx';
 import { DesktopIcon } from './DesktopIcon.tsx';
 
@@ -29,71 +30,87 @@ const Desktop = () => {
   const [selectComponent, setSelectComponent] = useState(<SelectionSquare />);
   const [mouseDown, setMouseDown] = useState(false);
 
+  const [windowHandlers, setWindowHandlers] = useState([new WindowHandler('introduction_window'), new WindowHandler('test_window')]);
+
+  const focusCallback = (id: string) => {
+    for (let i = 0; i < windowHandlers.length; i++) {
+      let wh = windowHandlers[i];
+      wh.setFocus(wh.id === id);
+    }
+  };
+
   const [windows, setWindows] = useState([{
       title: 'Introduction',
       id:    'introduction_window',
       x:     0,
       y:     0,
+      w:     "500px",
+      h:     "500px",
     }, {
       title: 'Test',
       id:    'test_window',
       x:     500,
       y:     0,
+      w:     "500px",
+      h:     "500px",
     }].map(t => {
-    return <Window className="window" x={t.x} y={t.y} w={"330px"} h={"100px"} title={t.title} id={t.id}/>;
+    return <Window className="window" key={t.id} x={t.x} y={t.y} w={t.w} h={t.h} title={t.title} id={t.id} onfocus={focusCallback}/>;
   }));
 
+
+
   const mouseMove = (e: ReactEvent) => {
-                var x = e.clientX; 
-                var y = e.clientY;
-                if (mouseDown && e.button === 0) {
-                  if (x < clickX) {
-                    setSelectX(x);
-                    setSelectWidth(clickX-x);
-                  } else {
-                    setSelectWidth(x-clickX);
-                    setSelectX(clickX);
-                  }
+    var x = e.clientX; 
+    var y = e.clientY;
+    if (mouseDown && e.button === 0) {
+      if (x < clickX) {
+        setSelectX(x);
+        setSelectWidth(clickX-x);
+      } else {
+        setSelectWidth(x-clickX);
+        setSelectX(clickX);
+      }
 
-                  if (y < clickY) {
-                    setSelectY(y);
-                    setSelectHeight(clickY-y);
-                  } else {
-                    setSelectHeight(y-clickY);
-                    setSelectY(clickY);
-                  }
-                }
+      if (y < clickY) {
+        setSelectY(y);
+        setSelectHeight(clickY-y);
+      } else {
+        setSelectHeight(y-clickY);
+        setSelectY(clickY);
+      }
+    }
 
-                setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+    setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
   }
 
   const isMouseDown = (e: ReactEvent) => {
-                if (e.button === 0 && e.target.className === "kde_desktop") {
-                    setMouseDown(true);
-                    var x = e.clientX - e.target.offsetLeft;
-                    var y = e.clientY - e.target.offsetTop;
-                    setClickX(x);
-                    setClickY(y);
-                    setSelectX(x);
-                    setSelectY(y);
-                    setSelectWidth(0);
-                    setSelectHeight(0);
-                    setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
-                }
+    if (e.button === 0 && e.target.className === "kde_desktop") {
+      setMouseDown(true);
+      var x = e.clientX - e.target.offsetLeft;
+      var y = e.clientY - e.target.offsetTop;
+      setClickX(x);
+      setClickY(y);
+      setSelectX(x);
+      setSelectY(y);
+      setSelectWidth(0);
+      setSelectHeight(0);
+      setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+    }
   }
 
   const mouseUp = (e: ReactEvent) => {
-                if (e.button === 0) {
-                    setMouseDown(false);
-                    setSelectX(0);
-                    setSelectY(0);
-                    setSelectWidth(0);
-                    setSelectHeight(0);
-                    setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
-                }
+    if (e.button === 0) {
+      setMouseDown(false);
+      setSelectX(0);
+      setSelectY(0);
+      setSelectWidth(0);
+      setSelectHeight(0);
+      setSelectComponent(<SelectionSquare x={selectX} y={selectY} width={selectWidth} height={selectHeight} />);
+    }
   }
+
   return (  <div className="kde_desktop" onMouseMove={mouseMove} onMouseDown={isMouseDown} onMouseUp={mouseUp}>
-              <DesktopIcon title="Terminal" x="50" y="50"/>
+              <DesktopIcon title="Terminal" x="25" y="25"/>
 
               { windows }
 

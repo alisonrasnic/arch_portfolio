@@ -2,7 +2,7 @@
   display: block;
   position: absolute;
   z-index: 100;
-  background-color: #333333;
+  background-color: #FFFFFF;
   border-radius: 5px;
   border-width: 2px;
   border-style: solid; 
@@ -10,9 +10,11 @@
   padding: 0px;
   margin: 0px;
   user-select: text;
+  cursor: ew-resize;
 }
 
 .window .window_title {
+  background-color: #333333;
   display: block;
   height: 30px;
   position: relative;
@@ -20,6 +22,7 @@
   font-weight: bold;
   margin: 0px;
   padding: 0px;
+  cursor: url('https://raw.githubusercontent.com/KDE/breeze/1c29fec85b2b8703e9394a47207d1cabcee35635/cursors/Breeze/Breeze/cursors_scalable/default/default.svg'), auto;
 }
 
 .window .window_title p {
@@ -33,8 +36,9 @@
   margin: 0px;
   padding: 0px;
   background-color: #222222;
-  height: 404px;
+  height: calc(100% - 46px);
   user-select: text;
+  cursor: url('https://raw.githubusercontent.com/KDE/breeze/1c29fec85b2b8703e9394a47207d1cabcee35635/cursors/Breeze/Breeze/cursors_scalable/default/default.svg'), auto;
 }
 
 .window_surface p {

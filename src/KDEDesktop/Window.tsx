@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {WindowHandler} from './WindowHandler.tsx';
 import './Window.css';
 
 interface WindowProps {
@@ -8,6 +9,7 @@ interface WindowProps {
   h:     number,
   title: string,
   id:    string,
+  onfocus: (handler: WindowHandler) => void, 
 };
 
 const Window: React.FC<WindowProps> = (props: WindowProps) => {
@@ -78,7 +80,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
   }
 
   return (
-    <div id={props.id} className="window" style={ {left: `${pos[0]}px`, top: `${pos[1]}px`, width: `${size[0]}`, height: `${size[1]}` }} >
+    <div id={props.id} className="window" style={ {left: `${pos[0]}px`, top: `${pos[1]}px`, width: `${size[0]}`, height: `${size[1]}` }} onMouseDown={() => props.onfocus(props.id)}>
       <div className="window_title" onMouseLeave={onTitleMouseLeave} onMouseDown={onTitleMouseDown} onMouseUp={onTitleMouseUp} onMouseMove={onTitleMouseMove}>
         <button className="window_button" onClick={onExit} style={{top: `0px`, float: `right`}}>
           <img style={{filter: `invert(100%)`}} width={20} src='https://invent.kde.org/frameworks/breeze-icons/-/raw/master/icons/actions/16/window-close.svg?ref_type=heads'/>
